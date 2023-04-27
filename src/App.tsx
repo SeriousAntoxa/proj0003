@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useEffect, useState } from "react"
+import "./App.css"
+import { connect } from "react-redux"
+import {
+    StoryType,
+    getNewStoriesData,
+    getNewsData,
+    getClearNewsData,
+} from "./redux/news-reducer"
+import News from "./Components/News/News"
+import { AppStateType } from "./redux/store"
+import { Route, Routes } from "react-router-dom"
+import Story from "./Components/Story/Story"
+import NewsContainer from "./Components/News/NewsContainer"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//type PropsType = MapStateToPropsType & MapDispatchToPropsType
+
+let App: FC = (props) => {
+    return (
+        <div className="App">
+            <Routes>
+                <Route path="/" element={<NewsContainer />} />
+                <Route path="/:storyId" element={<Story />} />
+            </Routes>
+        </div>
+    )
 }
 
-export default App;
+export default App
