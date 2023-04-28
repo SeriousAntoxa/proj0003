@@ -3,17 +3,14 @@ import { StoryType } from "./news-reducer"
 
 const SET_STORY = "proj0003/auth/SET-STORY"
 const SET_COMMENTS = "proj0003/auth/SET-COMMENT"
-//const SET_COMMENTS_DATA = "proj0003/auth/SET-COMMENT-DATA"
 
 type InitialStateType = {
     story: null | StoryType
-    //commentsData: any
     comments: Array<number>
 }
 
 let initialState: InitialStateType = {
     story: null,
-    //commentsData: [],
     comments: []
 }
 
@@ -29,11 +26,6 @@ const storyReducer = (state = initialState, action: any): InitialStateType => {
                 ...state,
                 comments: action.comments
             }
-        /*case SET_COMMENTS_DATA:
-            return {
-                ...state,
-                commentsData: [...state.commentsData, action.comment]
-            }*/
         default: {
             return { ...state }
         }
@@ -65,25 +57,6 @@ export let setCommentsData = (comments: Array<number>): SetCommentsDataType => {
         comments
     }
 }
-/*
-type SetCommentDataType = {
-    type: typeof SET_COMMENTS_DATA
-    comment: any
-}
-
-export let setCommentData = (comment: any): SetCommentDataType => {
-    return {
-        type: SET_COMMENTS_DATA,
-        comment
-    }
-}
-
-export const getCommentData = (id: number) => {
-    return async (dispatch: any) => {
-        let response = await newsAPI.getItem(id)
-        dispatch(setCommentData(response))
-    }
-}*/
 
 export const getStoryData = (id: number) => {
     return async (dispatch: any) => {

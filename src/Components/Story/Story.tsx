@@ -15,6 +15,10 @@ type PropsType = MapStateToPropsType & MapDispatchToPropsType
 let Story: FC<PropsType> = (props) => {
     let { storyId } = useParams<QuizParams>()
 
+    let updateStoryDate = () => {
+        props.getStoryData(Number(storyId))
+    }
+
     useEffect(() => {
         if (storyId !== undefined) {
             props.getStoryData(Number(storyId))
@@ -30,23 +34,23 @@ let Story: FC<PropsType> = (props) => {
             <div>
                 <Link to="/">back</Link>
                 <div>
-            <p>title: {story.title}</p>
-            <p>score: {story.score}</p>
-            <p>publisher: {story.by}</p>
-            <p>time: {time}</p>
-            <div>
-                <p>comments:</p>
-                <div>
-                    {story.kids ? (
-                        <Comments comments={props.comments} />
-                    ) : (
-                        "No comments"
-                    )}
+                    <p>title: {story.title}</p>
+                    <p>score: {story.score}</p>
+                    <p>publisher: {story.by}</p>
+                    <p>time: {time}</p>
+                    <div>
+                        <p>comments:</p>
+                        <div>
+                            <div onClick={()=>{updateStoryDate()}}>update comments</div>
+                            {story.kids ? (
+                                <Comments comments={props.comments} />
+                            ) : (
+                                "No comments"
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
-            
         )
     } else {
         return <></>
@@ -55,19 +59,16 @@ let Story: FC<PropsType> = (props) => {
 
 type MapStateToPropsType = {
     story: null | StoryType
-    //commentsData: any
     comments: Array<number>
 }
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
     story: state.story.story,
-    //commentsData: state.story.commentsData,
     comments: state.story.comments,
 })
 
 type MapDispatchToPropsType = {
     getStoryData: (id: number) => void
-    //getCommentData: (id: number) => void
 }
 
 export default connect<

@@ -13,8 +13,6 @@ import { Route, Routes } from "react-router-dom"
 import Story from "./Components/Story/Story"
 import NewsContainer from "./Components/News/NewsContainer"
 
-//type PropsType = MapStateToPropsType & MapDispatchToPropsType
-
 let App: FC = (props) => {
     return (
         <div className="App">

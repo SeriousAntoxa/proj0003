@@ -1,13 +1,6 @@
 import React, { FC, useEffect, useState } from "react"
 import New from "./New/New"
-import {
-    getClearNewsData,
-    getNewsData,
-    getNewStoriesData,
-    StoryType,
-} from "../../redux/news-reducer"
-import { connect } from "react-redux"
-import { AppStateType } from "../../redux/store"
+import { StoryType } from "../../redux/news-reducer"
 
 type PropsType = {
     news: Array<StoryType>

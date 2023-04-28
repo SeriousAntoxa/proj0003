@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react"
-import New from "./New/New"
 import {
     getClearNewsData,
     getNewsData,
@@ -20,25 +19,31 @@ type PropsType = {
 }
 
 let NewsContainer: FC<PropsType> = (props) => {
-    let [newStories, setNewStories] = useState(props.newStories)
+    let updateNewStories = () =>{
+        props.getNewStoriesData()
+    }
 
     useEffect(() => {
         props.getNewStoriesData()
     }, [])
+
     useEffect(() => {
-        setNewStories(props.newStories)
+        let interval = setInterval(() => {
+            props.getNewStoriesData()
+        }, 60000)
+
+        return () => clearInterval(interval)
+    }, [])
+
+    useEffect(() => {
         props.newStories.forEach((newId: number) => {
             return props.getNewsData(newId)
         })
-    }, [])
-    useEffect(() => {
-        setInterval(() => {
-            props.getNewStoriesData()
-        }, 20000)
-    }, [])
+    }, [props.newStories])
 
     return (
         <div>
+            <div onClick={()=>updateNewStories()} >Update news</div>
             <News
                 news={props.news}
                 getNewsData={props.getNewsData}

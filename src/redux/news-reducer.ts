@@ -27,7 +27,7 @@ let initialState: InitialStateType = {
     maxItem: 0,
     newStories: [],
     news: [],
-    countLastNews: 5
+    countLastNews: 20
 }
 
 const newsReducer = (state = initialState, action: any): InitialStateType => {

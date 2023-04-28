@@ -13,6 +13,10 @@ function reducer(state: any, action: any) {
             return {
                 commentsData: [...state.commentsData, action.commentsData],
             }
+        case "clear":
+            return {
+                commentsData: [],
+            }
         default:
             return state
     }
@@ -31,7 +35,8 @@ let Comments: FC<PropsType> = (props) => {
         props.comments.forEach((id: number) => {
             return getCommentData(id)
         })
-    }, [])
+        return dispatch({ type: "clear" })
+    }, [props.comments])
 
     useEffect(() => {
         if (state.commentsData.length === props.comments.length) {
