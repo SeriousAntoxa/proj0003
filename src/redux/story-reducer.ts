@@ -4,6 +4,7 @@ import { StoryType } from "./news-reducer"
 import { AppStateType } from "./store"
 
 const SET_STORY = "proj0003/auth/SET-STORY"
+const SET_CLEAR_STORY = "proj0003/auth/SET-CLEAR-STORY"
 const SET_COMMENTS = "proj0003/auth/SET-COMMENT"
 
 type InitialStateType = {
@@ -28,7 +29,7 @@ export type CommentDataType = {
     deleted?: boolean
 }
 
-type ActionsTypes = SetStoryDataType | SetCommentsDataType
+type ActionsTypes = SetStoryDataType | SetCommentsDataType | SetClearStoryType
 
 const storyReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
@@ -36,6 +37,11 @@ const storyReducer = (state = initialState, action: ActionsTypes): InitialStateT
             return {
                 ...state,
                 story: action.story,
+            }
+        case SET_CLEAR_STORY:
+            return {
+                ...state,
+                story: null
             }
         case SET_COMMENTS:
             return {
@@ -74,6 +80,16 @@ export let setCommentsData = (comments: Array<number>): SetCommentsDataType => {
     }
 }
 
+type SetClearStoryType = {
+    type: typeof SET_CLEAR_STORY
+}
+
+export let setCleatStory = (): SetClearStoryType => {
+    return {
+        type: SET_CLEAR_STORY,
+    }
+}
+
 type ThunkActionType = ThunkAction<Promise<any>, AppStateType, unknown, ActionsTypes>
 
 export const getStoryData = (id: number): ThunkActionType => {
@@ -83,5 +99,11 @@ export const getStoryData = (id: number): ThunkActionType => {
         if (!!response.kids) {
             dispatch(setCommentsData(response.kids))
         }
+    }
+}
+
+export const getCleatStory = (): ThunkActionType => {
+    return async (dispatch) => {
+        dispatch(setCleatStory())
     }
 }

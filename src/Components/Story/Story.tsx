@@ -55,11 +55,15 @@ let Story: FC<PropsType> = (props) => {
                         </p>
                         <p className="story-rest__point">Time: {time}</p>
                         <p className="story-rest__point">
-                            Link: <a className="story-rest__link" href={story.url}>{story.url}</a>
+                            Link:{" "}
+                            <a className="story-rest__link" href={story.url}>
+                                {story.url}
+                            </a>
                         </p>
                         <p className="story-rest__point">
                             Comments: {story.descendants}{" "}
-                            <button className="story-rest__button"
+                            <button
+                                className="story-rest__button"
                                 onClick={() => {
                                     updateStoryDate()
                                 }}

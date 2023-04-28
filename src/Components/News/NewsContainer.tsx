@@ -9,6 +9,7 @@ import { connect } from "react-redux"
 import { AppStateType } from "../../redux/store"
 import News from "./News"
 import "./News.css"
+import { getCleatStory } from "../../redux/story-reducer"
 
 type PropsType = {
     news: Array<StoryType>
@@ -16,6 +17,7 @@ type PropsType = {
     countLastNews: number
     getNewStoriesData: () => void
     getClearNewsData: () => void
+    getCleatStory: () => void
     getNewsData: (newId: number) => void
 }
 
@@ -26,6 +28,7 @@ let NewsContainer: FC<PropsType> = (props) => {
 
     useEffect(() => {
         props.getNewStoriesData()
+        props.getCleatStory()
     }, [])
 
     useEffect(() => {
@@ -70,6 +73,7 @@ type MapDispatchToPropsType = {
     getNewStoriesData: () => void
     getNewsData: (newId: number) => void
     getClearNewsData: () => void
+    getCleatStory: () => void
 }
 
 export default connect<
@@ -77,6 +81,6 @@ export default connect<
     MapDispatchToPropsType,
     any,
     AppStateType
->(mapStateToProps, { getNewStoriesData, getNewsData, getClearNewsData })(
+>(mapStateToProps, { getNewStoriesData, getNewsData, getClearNewsData, getCleatStory })(
     NewsContainer
 )
