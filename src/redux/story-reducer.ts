@@ -24,6 +24,8 @@ export type CommentDataType = {
     text: string
     time: number
     type: string
+    dead?: boolean
+    deleted?: boolean
 }
 
 type ActionsTypes = SetStoryDataType | SetCommentsDataType

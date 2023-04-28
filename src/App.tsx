@@ -6,11 +6,18 @@ import NewsContainer from "./Components/News/NewsContainer"
 
 let App: FC = (props) => {
     return (
-        <div className="App">
-            <Routes>
-                <Route path="/" element={<NewsContainer />} />
-                <Route path="/:storyId" element={<Story />} />
-            </Routes>
+        <div className="wrapper">
+            <div className="container">
+                <div>
+                    <header className="header">
+                        <p className="title">Hacker News</p>
+                    </header>
+                </div>
+                <Routes>
+                    <Route path="/" element={<NewsContainer />} />
+                    <Route path="/:storyId" element={<Story />} />
+                </Routes>
+            </div>
         </div>
     )
 }

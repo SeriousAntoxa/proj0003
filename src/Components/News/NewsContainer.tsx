@@ -8,6 +8,7 @@ import {
 import { connect } from "react-redux"
 import { AppStateType } from "../../redux/store"
 import News from "./News"
+import "./News.css"
 
 type PropsType = {
     news: Array<StoryType>
@@ -42,8 +43,8 @@ let NewsContainer: FC<PropsType> = (props) => {
     }, [props.newStories])
 
     return (
-        <div>
-            <div onClick={() => updateNewStories()}>Update news</div>
+        <div className="news content">
+            <button className="news__button button" onClick={() => updateNewStories()}>Update news</button>
             <News
                 news={props.news}
                 getNewsData={props.getNewsData}

@@ -29,7 +29,7 @@ let initialState: InitialStateType = {
     maxItem: 0,
     newStories: [],
     news: [],
-    countLastNews: 20
+    countLastNews: 100
 }
 
 type ActionsTypes = SetNewsDataType | SetNewStoriesDataType | SetClearNewsDataType

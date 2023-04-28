@@ -1,0 +1,49 @@
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.header {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(255, 136, 0);
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.button {
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: rgb(255, 139, 45);
+    border-radius: 10px;
+}
+
+.content {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.block {
+    margin-top: 10px;
+}

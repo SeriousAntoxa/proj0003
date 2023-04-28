@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import Comments from "../Comments"
 import { CommentDataType } from "../../../../redux/story-reducer"
+import "./CommentData.css"
 
 type PropsType = {
     commentData: CommentDataType
@@ -15,25 +16,28 @@ let Comment: FC<PropsType> = (props) => {
     }
 
     return (
-        <div>
-            <div>{commentDate.by}</div>
-            <div>{commentDate.text}</div>
-            <div>
-                {commentDate.kids ? (
-                    <div>
-                        <div onClick={() => toggleVisibleComments()}>
-                            <p>open comment</p>
-                        </div>
-                        {visibleComment && (
-                            <div>
-                                <Comments comments={commentDate.kids} />
-                            </div>
-                        )}
-                    </div>
-                ) : (
-                    <></>
-                )}
+        <div className="comment">
+            <div className="comment__publisher">
+                <p>{commentDate.by}</p>
             </div>
+            <div className="comment__text">
+                <p>{commentDate.text}</p>
+            </div>
+
+            {commentDate.kids ? (
+                <div className="comment__next">
+                    <button className="comment__button" onClick={() => toggleVisibleComments()}>
+                        Next comment
+                    </button>
+                    <>
+                        {visibleComment && (
+                            <Comments comments={commentDate.kids} />
+                        )}
+                    </>
+                </div>
+            ) : (
+                <></>
+            )}
         </div>
     )
 }

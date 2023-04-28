@@ -1,0 +1,21 @@
+.comment {
+    padding: 10px;
+}
+
+.comment__publisher {
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.comment__text {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.comment__button {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1em;
+    padding: 5px;
+    background-color: rgb(255, 139, 45);
+}

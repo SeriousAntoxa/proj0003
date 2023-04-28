@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, useEffect, useState } from "react"
 import New from "./New/New"
 import { StoryType } from "../../redux/news-reducer"
+import "./News.css"
 
 type PropsType = {
     news: Array<StoryType>
@@ -13,10 +14,10 @@ let News: FC<PropsType> = (props) => {
 
     useEffect(() => {
         setNewsData(
-            props.news.map((data: StoryType) => {
+            props.news.map((data: StoryType, index: number) => {
                 return (
-                    <li key={data.id}>
-                        <New storyData={data} />
+                    <li className="news__item" key={data.id}>
+                        <New storyData={data} index={index}/>
                     </li>
                 )
             })
@@ -24,8 +25,8 @@ let News: FC<PropsType> = (props) => {
     }, [props.news])
 
     return (
-        <div>
-            <ul>{newsData}</ul>
+        <div className="news__block block">
+            <ul className="news__items">{newsData}</ul>
         </div>
     )
 }

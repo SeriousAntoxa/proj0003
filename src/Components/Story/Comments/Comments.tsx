@@ -2,6 +2,7 @@ import React, { FC, ReactNode, useEffect, useReducer, useState } from "react"
 import Comment from "./Comment/Comment"
 import { newsAPI } from "../../../api/api"
 import { CommentDataType } from "../../../redux/story-reducer"
+import "./Comment.css"
 
 type InitialStateType = typeof initialState
 
@@ -46,18 +47,21 @@ let Comments: FC<PropsType> = (props) => {
         if (state.commentsData.length === props.comments.length) {
             setCommentsData(
                 state.commentsData.map((commentData: CommentDataType) => {
-                    return (
-                        <li>
-                            <Comment commentData={commentData} />
-                        </li>
-                    )
+                    if (!!commentData.dead || !!commentData.deleted) {
+                    } else {
+                        return (
+                            <li className="comments__item">
+                                <Comment commentData={commentData} />
+                            </li>
+                        )
+                    }
                 })
             )
         }
     }, [state.commentsData])
 
     return (
-        <div>
+        <div className="comments__items">
             <ul>{commentsData}</ul>
         </div>
     )
