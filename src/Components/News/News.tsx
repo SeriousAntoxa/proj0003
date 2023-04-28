@@ -17,7 +17,7 @@ let News: FC<PropsType> = (props) => {
             props.news.map((data: StoryType, index: number) => {
                 return (
                     <li className="news__item" key={data.id}>
-                        <New storyData={data} index={index}/>
+                        <New storyData={data} index={index+1}/>
                     </li>
                 )
             })
