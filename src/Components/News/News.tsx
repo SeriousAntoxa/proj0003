@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, ReactNode, useEffect, useState } from "react"
 import New from "./New/New"
 import { StoryType } from "../../redux/news-reducer"
 
@@ -9,7 +9,7 @@ type PropsType = {
 }
 
 let News: FC<PropsType> = (props) => {
-    let [newsData, setNewsData] = useState<Array<any>>([])
+    let [newsData, setNewsData] = useState<Array<ReactNode>>([])
 
     useEffect(() => {
         setNewsData(

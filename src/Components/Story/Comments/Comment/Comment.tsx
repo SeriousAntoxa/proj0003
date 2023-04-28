@@ -1,30 +1,32 @@
 import React, { FC, useEffect, useState } from "react"
 import Comments from "../Comments"
+import { CommentDataType } from "../../../../redux/story-reducer"
 
 type PropsType = {
-    data: any
+    commentData: CommentDataType
 }
 
 let Comment: FC<PropsType> = (props) => {
-    let [visibleComment, setVisibleComment] = useState(false)
+    let commentDate: CommentDataType = props.commentData
+    let [visibleComment, setVisibleComment] = useState<boolean>(false)
 
-    let toggleVisibleComments = () => {
+    let toggleVisibleComments = (): void => {
         setVisibleComment(!visibleComment)
     }
 
     return (
         <div>
-            <div>{props.data.by}</div>
-            <div>{props.data.text}</div>
+            <div>{commentDate.by}</div>
+            <div>{commentDate.text}</div>
             <div>
-                {props.data.kids ? (
+                {commentDate.kids ? (
                     <div>
                         <div onClick={() => toggleVisibleComments()}>
                             <p>open comment</p>
                         </div>
                         {visibleComment && (
                             <div>
-                                <Comments comments={props.data.kids} />
+                                <Comments comments={commentDate.kids} />
                             </div>
                         )}
                     </div>

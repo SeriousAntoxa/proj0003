@@ -18,7 +18,4 @@ const store = createStore(reducers, /* preloadedState, */ composeEnhancers(
     applyMiddleware(thunk)
   ));
 
-  //@ts-ignore
-  window._store_ = store
-
 export default store

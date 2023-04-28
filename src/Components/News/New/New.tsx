@@ -7,12 +7,12 @@ type PropsType = {
 }
 
 let New: FC<PropsType> = (props) => {
-    let story = props.storyData
+    let story: StoryType = props.storyData
 
-    let date = new Date(story.time * 1000)
-    let time = date.toLocaleString()
+    let date: Date = new Date(story.time * 1000)
+    let time: string  = date.toLocaleString()
 
-    let path = `/${story.id}`
+    let path: string = `/${story.id}`
 
     return (
         <Link to={path}>

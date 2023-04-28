@@ -6,16 +6,16 @@ import { getStoryData } from "../../redux/story-reducer"
 import { AppStateType } from "../../redux/store"
 import Comments from "./Comments/Comments"
 
-type QuizParams = {
+type LinkParams = {
     storyId: string | undefined
 }
 
 type PropsType = MapStateToPropsType & MapDispatchToPropsType
 
 let Story: FC<PropsType> = (props) => {
-    let { storyId } = useParams<QuizParams>()
+    let { storyId } = useParams<LinkParams>()
 
-    let updateStoryDate = () => {
+    let updateStoryDate = (): void => {
         props.getStoryData(Number(storyId))
     }
 
@@ -26,9 +26,9 @@ let Story: FC<PropsType> = (props) => {
     }, [])
 
     if (props.story !== null) {
-        let story = props.story
-        let date = new Date(story.time * 1000)
-        let time = date.toLocaleString()
+        let story: StoryType = props.story
+        let date: Date = new Date(story.time * 1000)
+        let time: string = date.toLocaleString()
 
         return (
             <div>

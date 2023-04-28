@@ -1,5 +1,7 @@
+import { ThunkAction } from "redux-thunk"
 import { newsAPI } from "../api/api"
 import { StoryType } from "./news-reducer"
+import { AppStateType } from "./store"
 
 const SET_STORY = "proj0003/auth/SET-STORY"
 const SET_COMMENTS = "proj0003/auth/SET-COMMENT"
@@ -14,7 +16,19 @@ let initialState: InitialStateType = {
     comments: []
 }
 
-const storyReducer = (state = initialState, action: any): InitialStateType => {
+export type CommentDataType = {
+    by: string
+    id: number
+    parent: number
+    kids: Array<number>
+    text: string
+    time: number
+    type: string
+}
+
+type ActionsTypes = SetStoryDataType | SetCommentsDataType
+
+const storyReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case SET_STORY:
             return {
@@ -58,8 +72,10 @@ export let setCommentsData = (comments: Array<number>): SetCommentsDataType => {
     }
 }
 
-export const getStoryData = (id: number) => {
-    return async (dispatch: any) => {
+type ThunkActionType = ThunkAction<Promise<any>, AppStateType, unknown, ActionsTypes>
+
+export const getStoryData = (id: number): ThunkActionType => {
+    return async (dispatch) => {
         let response = await newsAPI.getItem(id)
         dispatch(setStoryData(response))
         if (!!response.kids) {

@@ -1,4 +1,6 @@
+import { ThunkAction } from "redux-thunk"
 import { newsAPI } from "../api/api"
+import { AppStateType } from "./store"
 
 const SET_NEWS = "proj0003/auth/SET-NEW"
 const SET_NEW_STORY = "proj0003/auth/SET-NEW-STORY"
@@ -30,7 +32,9 @@ let initialState: InitialStateType = {
     countLastNews: 20
 }
 
-const newsReducer = (state = initialState, action: any): InitialStateType => {
+type ActionsTypes = SetNewsDataType | SetNewStoriesDataType | SetClearNewsDataType
+
+const newsReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case SET_NEWS:
             return {
@@ -89,8 +93,10 @@ export let setClearNewsData = (): SetClearNewsDataType => {
     }
 }
 
-export const getNewsData = (id: number) => {
-    return async (dispatch: any) => {
+type ThunkActionType = ThunkAction<Promise<any>, AppStateType, unknown, ActionsTypes>
+
+export const getNewsData = (id: number): ThunkActionType => {
+    return async (dispatch) => {
         let response = await newsAPI.getItem(id)
         dispatch(setNewsData(response))
     }
@@ -102,15 +108,10 @@ export const getClearNewsData = () => {
     }
 }
 
-export const getNewStoriesData = () => {
-    return async (dispatch: any) => {
+export const getNewStoriesData = (): ThunkActionType => {
+    return async (dispatch) => {
         let newStories = await newsAPI.getNewStories()
-        let d = newStories.splice(0, initialState.countLastNews)
         dispatch(setClearNewsData())
-        dispatch(setNewStoriesData(d))
-
-        /*d.forEach((newId: number) => {
-            dispatch(getNewsData(newId))
-        })*/
+        dispatch(setNewStoriesData(newStories.splice(0, initialState.countLastNews)))
     }
 }

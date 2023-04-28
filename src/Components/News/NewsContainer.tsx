@@ -19,7 +19,7 @@ type PropsType = {
 }
 
 let NewsContainer: FC<PropsType> = (props) => {
-    let updateNewStories = () =>{
+    let updateNewStories = (): void => {
         props.getNewStoriesData()
     }
 
@@ -37,13 +37,13 @@ let NewsContainer: FC<PropsType> = (props) => {
 
     useEffect(() => {
         props.newStories.forEach((newId: number) => {
-            return props.getNewsData(newId)
+            props.getNewsData(newId)
         })
     }, [props.newStories])
 
     return (
         <div>
-            <div onClick={()=>updateNewStories()} >Update news</div>
+            <div onClick={() => updateNewStories()}>Update news</div>
             <News
                 news={props.news}
                 getNewsData={props.getNewsData}
