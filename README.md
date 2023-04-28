@@ -14,7 +14,7 @@ In the project directory, you can run the server by running the following comman
 
 Runs the app open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-
+Link to deployed application [https://proj0003-brgroup.firebaseapp.com/]
 
 # Тестовое задание BR Group для соискателей на должность Middle Frontend React
 
