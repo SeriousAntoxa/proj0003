@@ -1,46 +1,63 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+After clone this repository, run the following command to install the dependencies required for the project:
 
-## Available Scripts
+### `npm install`
 
-In the project directory, you can run:
+In case of issues shown after the npm install, run the below to automatically fix the issues:
+
+### `npm audit fix`
+
+In the project directory, you can run the server by running the following command:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Тестовое задание BR Group для соискателей на должность Middle Frontend React
 
-### `npm run build`
+Нужно разработать интерфейс для сайта Hacker News, (https://news.ycombinator.com/news) состоящий из двух страниц.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Продуктовые требования
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Главная страница
+• Показывает последние 100 новостей в виде списка, отсортированного по дате, самые свежие сверху.
+• Каждая новость содержит:
+ ⁃ название
+ ⁃ рейтинг
+ ⁃ ник автора
+ ⁃ дату публикации
+ ⁃ счётчик количества комментариев
+• По клику на новость происходит переход на страницу новости
+• Список новостей должен автоматически обновляться раз в минуту без участия пользователя
+• На странице должна быть кнопка для принудительного обновления списка новостей
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Страница новости
+• Должна содержать:
+ ⁃ ссылку на новость
+ ⁃ заголовок новости
+ ⁃ дату
+ ⁃ автора
+ ⁃ счётчик количества комментариев
+ ⁃ список комментариев в виде дерева
+• Корневые комментарии подгружаются сразу же при входе на страницу, вложенные - по клику на корневой
+• На странице должна быть кнопка для принудительного обновления списка комментариев
+• На странице должна быть кнопка для возврата к списку новостей
 
-### `npm run eject`
+Технические требования
+• Приложение разработано с использованием React 
+• Использование TypeScript
+• Использован официальный API Hacker News. (https://github.com/HackerNews/API) Вызовы Hacker News API и обработка данных от него производятся напрямую с фронтенда
+• Роутинг выполнен с использованием React Router V6
+ (https://reactrouter.com/en/main)• Фреймворк UI любой на ваше усмотрение (как пример MUI). (https://mui.com/)
+ ⁃ Можно и на чистом css, главное, чтобы было красиво
+• Приложение должно запускаться по адресу localhost:3000 
+• При переходах по ссылкам страница не перезагружается
+• Исходный код решения должен быть выложен с вашего аккаунта на Github (http://github.com/) с Readme файлом с инструкцией по запуску
+• Исходный код решения должен быть выложен с вашего аккаунта на Github (http://github.com/) с Readme файлом с инструкцией по запуску
+• Ссылка на Live Demo проекта на любом хостинге (например, Netlify).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Опциональные задания
+• Написать приложение с использованием Remix
